@@ -47,4 +47,40 @@
   .nav-menu-content {
     @apply bg-card border border-card-border text-brand-text rounded-xl shadow-subtle;
   }
+
+  .marquee {
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+  .marquee-track {
+    display: flex;
+    /* Corresponde ao gap-8 em Tailwind */
+    gap: 2rem; 
+    animation: scroll 60s linear infinite;
+  }
+
+  /* Pausa a animação quando o mouse está sobre o container */
+  .marquee[data-animated="true"]:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-card {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Aplica um leve zoom no card individual ao passar o mouse */
+  .marquee[data-animated="true"] .marquee-card:hover {
+    transform: scale(1.05);
+  }
+
+}
+
+@keyframes scroll {
+  to {
+    /* Move a faixa para a esquerda em 50% de sua largura + metade do gap */
+    transform: translateX(calc(-50% - 1rem));
+  }
 }
