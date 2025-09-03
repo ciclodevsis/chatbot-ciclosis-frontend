@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Check, Building2, Briefcase, GraduationCap, Store, Landmark, HelpCircle, BookOpen, Award, Users, MessageSquare, Code, Handshake, ShieldCheck, BarChart2, Zap, Cog, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Check, Building2, Briefcase, GraduationCap, Store, Landmark, HelpCircle, BookOpen, Award, Users, MessageSquare, Code, ShieldCheck, BarChart2, Zap, Cog, Twitter, Linkedin, Instagram } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import React from "react";
@@ -295,7 +295,7 @@ function TestimonialsSection() {
                 {/* Depoimento 1 */}
                 <Card className="flex flex-col justify-between">
                     <CardContent className="pt-6">
-                        <p className="italic">"O CicloSis revolucionou nosso agendamento. Reduzimos o tempo gasto em 80% e nossos clientes adoram a praticidade do chatbot."</p>
+                        <p className="italic">A CicloSis revolucionou nosso agendamento. Reduzimos o tempo gasto em 80% e nossos clientes adoram a praticidade do chatbot.</p>
                     </CardContent>
                     <CardHeader>
                         <div className="flex items-center gap-4">
