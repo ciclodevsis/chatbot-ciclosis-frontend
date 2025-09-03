@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ✅ CORREÇÃO: Definição do tema "Clarity & Control" usando variáveis CSS */
+@layer base {
+  :root {
+    /* Cores Base */
+    --background: 240 10% 96.1%; /* #F5F5F7 */
+    --foreground: 0 0% 11%;      /* #1E1E1E */
+
+    /* Cores dos Cards e Painéis */
+    --card: 0 0% 100%;           /* #FFFFFF */
+    --card-foreground: 0 0% 11%; /* #1E1E1E */
+
+    /* Cores de Destaque (Accent) */
+    --primary: 217.2 100% 50%;   /* #007AFF */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
+
+    /* Cores Secundárias e de Apoio */
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%; /* #6B7280 */
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    
+    /* Outras Cores */
+    --destructive: 0 84.2% 60.2%;
+    --border: 215.4 16.3% 90%; /* #E5E7EB */
+    --input: 215.4 16.3% 90%;
+    --ring: 217.2 100% 50%;
+
+    /* Raio da Borda */
+    --radius: 0.75rem;
+  }
+
+  /* O modo escuro pode ser definido aqui no futuro */
+  .dark {
+    /* ... variáveis para o modo escuro ... */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Classes de Componentes "Aurora UI" */
+@layer components {
+  .aurora-bg {
+    @apply absolute top-0 left-0 w-full h-full -z-10;
+    animation: aurora 60s linear infinite;
+  }
+}
+
+/* Cole isto no final de app/globals.css */
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.liquid-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+.liquid-bg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.3), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.3), transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.2), transparent 30%);
+    animation: liquid-flow 25s ease-in-out infinite;
+}
+@keyframes liquid-flow {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.pricing-toggle-bg {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: calc(50% - 2px);
+    height: calc(100% - 4px);
+    background-color: #3b82f6; /* blue-500 */
+    border-radius: 9999px;
+    transition: transform 0.3s ease-in-out;
+}
+input:checked + .pricing-toggle-bg {
+    transform: translateX(100%);
+}
