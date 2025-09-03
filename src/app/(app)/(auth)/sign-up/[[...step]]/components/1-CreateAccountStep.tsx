@@ -128,7 +128,7 @@ export function CreateAccountStep({ onNextStep }: CreateAccountStepProps) {
             <Checkbox id="terms" checked={agreed} onCheckedChange={(checked) => setAgreed(checked === true)} disabled={isLoading} />
             <div className="grid gap-1.5 leading-none">
                 <label htmlFor="terms" className="text-sm font-medium">Concordar com os termos e políticas</label>
-                <p className="text-xs text-muted-foreground">Ao continuar, você concorda com nossos <Link href="/termos" className="underline">Termos</Link> e <Link href="/privacidade" className="underline">Privacidade</Link>.</p>
+                <p className="text-xs text-muted-foreground">Ao continuar, você concorda com nossos <Link href="/legal/termos-de-uso" className="underline">Termos</Link> e <Link href="/legal/politica-de-privacidade" className="underline">Privacidade</Link>.</p>
             </div>
           </div>
 
