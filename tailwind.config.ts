@@ -1,3 +1,5 @@
+// tailwind.config.ts (Corrigido)
+
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -10,65 +12,89 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
-      screens: { "2xl": "1400px" },
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px'
+      }
     },
     extend: {
       colors: {
-        // Sistema de Cores "Aurora UI"
-        'brand-bg': '#F5F5F7',
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))'
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))'
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))'
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))'
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))'
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))'
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))'
+        },
+        'brand-bg': 'hsl(var(--background))',
         'brand-text': {
-          DEFAULT: '#1E1E1E',
-          secondary: '#6B7280',
+          DEFAULT: 'hsl(var(--foreground))',
+          secondary: 'hsl(var(--muted-foreground))'
         },
         'brand-accent': {
-          DEFAULT: '#007AFF',
-          hover: '#005EC4',
+          DEFAULT: 'hsl(var(--primary))',
+          hover: '#005EC4'
         },
-        'glass-bg': 'rgba(245, 245, 247, 0.75)',
-        'table-row-stripe': '#F9FAFB',
-        'tab-active-bg': '#FFFFFF',
+        'card-border': 'hsl(var(--border))',
+        'table-row-stripe': 'hsl(var(--secondary))',
         'status-success': '#10B981',
-        'status-warning': '#F59E0B',
-        'status-error': '#EF4444',
-
-        // Cores padrão do shadcn/ui
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: { DEFAULT: "hsl(var(--primary))", foreground: "hsl(var(--primary-foreground))" },
-        secondary: { DEFAULT: "hsl(var(--secondary))", foreground: "hsl(var(--secondary-foreground))" },
-        destructive: { DEFAULT: "hsl(var(--destructive))", foreground: "hsl(var(--destructive-foreground))" },
-        muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },
-        accent: { DEFAULT: "hsl(var(--accent))", foreground: "hsl(var(--accent-foreground))" },
-        popover: { DEFAULT: "hsl(var(--popover))", foreground: "hsl(var(--popover-foreground))" },
-        card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
-      },
-      // ✅ CORREÇÃO: A cor 'glass-border' foi movida para dentro do seu próprio objeto 'borderColor'
-      borderColor: {
-        DEFAULT: "hsl(var(--border))",
-        'glass-border': 'rgba(0, 0, 0, 0.1)',
+        'status-error': '#EF4444'
       },
       borderRadius: {
-        lg: "var(--radius)", md: "calc(var(--radius) - 2px)", sm: "calc(var(--radius) - 4px)",
-        'xl': `calc(var(--radius) + 4px)`,
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+        xl: 'calc(var(--radius) + 4px)', // Corrigido: Removido as crases extras
       },
-      keyframes: {
-        aurora: { from: { backgroundPosition: '0% 50%' }, to: { backgroundPosition: '100% 50%' } },
-        "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
-        "accordion-up": { from: { height: "var(--radix-accordion-content-height)" }, to: { height: "0" } },
+      keyframes: { // 👇 CORREÇÃO: Removidas as chaves duplicadas
+        aurora: {
+          from: { backgroundPosition: '0% 50%' },
+          to: { backgroundPosition: '100% 50%' }
+        },
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' }
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' }
+        }
       },
-      animation: {
+      animation: { // 👇 CORREÇÃO: Removidas as chaves duplicadas
         aurora: 'aurora 60s linear infinite',
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out'
       },
       boxShadow: {
-        'subtle': '0 4px 12px 0 rgba(0, 0, 0, 0.05)',
+        subtle: '0 4px 12px 0 rgba(0, 0, 0, 0.05)'
       }
-    },
+    }
   },
   plugins: [require("tailwindcss-animate")],
 };
