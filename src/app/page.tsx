@@ -315,7 +315,7 @@ function TestimonialsSection() {
                     {[...testimonials, ...testimonials].map((testimonial, index) => (
                         <Card key={index} className="flex flex-col justify-between flex-shrink-0 w-[350px] marquee-card">
                              <CardContent className="pt-6">
-                                 <p className="italic">"{testimonial.quote}"</p>
+                                 <p className="italic">'{testimonial.quote}'</p>
                              </CardContent>
                              <CardHeader>
                                  <div className="flex items-center gap-4">
