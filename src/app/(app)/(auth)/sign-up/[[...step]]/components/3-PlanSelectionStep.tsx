@@ -57,7 +57,7 @@ export function PlanSelectionStep({ onPlanSelected, existingSubscription }: Plan
                     </CardHeader>
                     <CardContent className="flex-grow p-0 mt-6">
                         <div className="mb-6 h-20">
-                            {plan.id === 'free' ? (<p className="text-4xl font-bold">R$ 0,00</p>) : plan.id === 'standard' ? (<> <p className="text-4xl font-bold"> {formData.billingCycle === 'annual' ? `R$ 40,00` : `R$ 50,00`} </p> <p className="text-sm text-brand-text/70 -mt-1">por mês</p> <p className="text-xs text-brand-text/70">para cada usuários</p> </>) : (<div className="flex items-center pt-4"><p className="text-2xl font-bold text-brand-text/50">Em breve</p></div>)}
+                            {plan.id === 'free' ? (<p className="text-4xl font-bold">R$ 0,00</p>) : plan.id === 'standard' ? (<> <p className="text-4xl font-bold"> {formData.billingCycle === 'annual' ? `R$ 40,00` : `R$ 50,00`} </p> <p className="text-sm text-brand-text/70 -mt-1">por mês</p> <p className="text-xs text-brand-text/70">para cada usuário</p> </>) : (<div className="flex items-center pt-4"><p className="text-2xl font-bold text-brand-text/50">Em breve</p></div>)}
                         </div>
                         <ul className="space-y-2 text-sm text-brand-text">
                             {plan.features.map((feature, i) => (<li key={i} className="flex items-start gap-2"><Check className="h-4 w-4 mt-0.5 text-status-success flex-shrink-0" /><span>{feature}</span></li>))}

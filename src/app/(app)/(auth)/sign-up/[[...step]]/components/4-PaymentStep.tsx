@@ -32,7 +32,7 @@ const usePlanDetails = () => {
     // Preços em centavos para consistência com o backend
     const planDetails: { [key: string]: { name: string, price: number } } = {
         'free': { name: 'Free', price: 0 },
-        'standard': { name: 'Standard', price: formData.billingCycle === 'annual' ? 120 : 1800 },
+        'standard': { name: 'Standard', price: formData.billingCycle === 'annual' ? 180000 : 12000 },
         // Adicione outros planos aqui se necessário
     };
     return planDetails;
