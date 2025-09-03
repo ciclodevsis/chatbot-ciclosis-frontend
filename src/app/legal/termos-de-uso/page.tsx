@@ -13,10 +13,10 @@ export default function TermosDeUsoPage() {
         <h1>TERMOS DE USO DO SISTEMA DE GESTÃO DE AGENDAMENTOS [Nome do seu SaaS]</h1>
         <p className="text-sm text-brand-text-secondary">Última atualização: [Inserir Data]</p>
         <p>
-          Bem-vindo ao [Nome do seu SaaS]! Estes Termos de Uso ("Termos") regem o seu acesso e uso da plataforma de gestão de agendamentos oferecida pela [Nome da sua Empresa], inscrita no CNPJ sob o nº [Seu CNPJ], com sede em [Seu Endereço] ("nós", "nosso", "nossa").
+          Bem-vindo ao [Nome do seu SaaS]! Estes Termos de Uso (Termos) regem o seu acesso e uso da plataforma de gestão de agendamentos oferecida pela [Nome da sua Empresa], inscrita no CNPJ sob o nº [Seu CNPJ], com sede em [Seu Endereço] (nós, nosso, nossa).
         </p>
         <p>
-          Ao se cadastrar e utilizar a Plataforma, você ("Contratante") concorda em cumprir e estar vinculado a estes Termos. Se você não concordar com estes Termos, não utilize a Plataforma.
+          Ao se cadastrar e utilizar a Plataforma, você (Contratante) concorda em cumprir e estar vinculado a estes Termos. Se você não concordar com estes Termos, não utilize a Plataforma.
         </p>
 
         <h2>1. Objeto</h2>
@@ -62,7 +62,7 @@ export default function TermosDeUsoPage() {
 
         <h2>8. Isenção de Garantias e Limitação de Responsabilidade</h2>
         <ol>
-            <li>A Plataforma é fornecida "como está", sem garantias de qualquer tipo.</li>
+            <li>A Plataforma é fornecida como está, sem garantias de qualquer tipo.</li>
             <li>Em nenhuma hipótese [Nome da sua Empresa] será responsável por quaisquer danos diretos, indiretos, incidentais, especiais ou consequenciais decorrentes do uso ou da incapacidade de usar a Plataforma.</li>
         </ol>
         

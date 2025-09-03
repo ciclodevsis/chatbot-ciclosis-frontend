@@ -12,7 +12,7 @@ export default function PoliticaDePrivacidadePage() {
         <h1>POLÍTICA DE PRIVACIDADE DO SISTEMA DE GESTÃO DE AGENDAMENTOS [Nome do seu SaaS]</h1>
         <p className="text-sm text-brand-text-secondary">Última atualização: [Inserir Data]</p>
         <p>
-          A sua privacidade e a privacidade dos seus clientes são de extrema importância para nós. Esta Política de Privacidade descreve como [Nome da sua Empresa] ("nós", "nosso", "nossa") coleta, usa, compartilha e protege os dados pessoais no contexto da sua utilização do nosso sistema de gestão de agendamentos ("Plataforma").
+          A sua privacidade e a privacidade dos seus clientes são de extrema importância para nós. Esta Política de Privacidade descreve como [Nome da sua Empresa] (nós, nosso, nossa) coleta, usa, compartilha e protege os dados pessoais no contexto da sua utilização do nosso sistema de gestão de agendamentos (Plataforma).
         </p>
 
         <h2>1. Dados Coletados</h2>
