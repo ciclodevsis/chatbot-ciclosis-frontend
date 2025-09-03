@@ -95,12 +95,12 @@ export default function HomePage() {
   );
 }
 
-export function Header() {
+// ✅ FIX: Removed "export" to make this a local component and resolve the Next.js page type error.
+function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
         <div className="flex items-center gap-8">
-          {/* ✅ FIX: Replaced Link with <a> */}
           <a href="/" className="text-2xl font-bold text-brand-text">
             Ciclo<span className="text-brand-accent">Sis</span>
           </a>
@@ -128,7 +128,6 @@ export function Header() {
                       <ul className="flex flex-col gap-1">
                         {productFeaturesList.map((feature) => (
                           <li key={feature.title}>
-                             {/* ✅ FIX: Replaced Link with <a> */}
                             <a href={feature.href} className="flex items-center gap-3 p-2 rounded-md hover:bg-accent transition-colors">
                               <feature.icon className="h-5 w-5 text-primary flex-shrink-0" />
                               <span className="font-medium text-sm text-foreground">{feature.title}</span>
@@ -180,7 +179,6 @@ export function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                {/* ✅ FIX: Replaced Link with <a> */}
                 <a href="#pricing" className={navigationMenuTriggerStyle()}>Preços</a>
               </NavigationMenuItem>
 
@@ -188,7 +186,6 @@ export function Header() {
           </NavigationMenu>
         </div>
         <div className="flex items-center space-x-4">
-          {/* ✅ FIX: Replaced Link with <a> */}
           <a href="/login" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Login</a>
           <Button asChild className="rounded-full">
             <a href="/sign-up">Experimente Gratuitamente</a>
@@ -212,7 +209,6 @@ function HeroSection() {
             CicloSis é a plataforma completa para gerenciamento de agendamentos, clientes e comunicação via Chatbot. 
           </p> 
           <div className="flex justify-center gap-4"> 
-            {/* ✅ FIX: Replaced Link with <a> */}
             <Button asChild size="lg" className="rounded-full"><a href="/sign-up">Comece Agora (Grátis)</a></Button> 
             <Button asChild size="lg" variant="outline" className="rounded-full"><a href="#features">Ver Funcionalidades</a></Button> 
           </div> 
@@ -239,7 +235,6 @@ function FeaturesSection() {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {productFeaturesList.map(feature => (
-             // ✅ FIX: Replaced Link with <a>
             <a href={feature.href} key={feature.title} className="block group">
               <Card className="h-full bg-background group-hover:border-primary group-hover:shadow-subtle transition-all duration-300">
                 <CardHeader>
@@ -274,7 +269,6 @@ function SolutionsSection() {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
           {solutions.map((solution)=>(
-            // ✅ FIX: Replaced Link with <a>
             <a href={solution.href} key={solution.title} className="block group">
               <Card className="h-full group-hover:border-primary group-hover:shadow-subtle transition-all duration-300">
                 <CardHeader>
@@ -315,7 +309,7 @@ function TestimonialsSection() {
                     {[...testimonials, ...testimonials].map((testimonial, index) => (
                         <Card key={index} className="flex flex-col justify-between flex-shrink-0 w-[350px] marquee-card">
                              <CardContent className="pt-6">
-                                 <p className="italic">`&quot;`{testimonial.quote}`&quot;`</p>
+                                 <p className="italic">`&apos;`{testimonial.quote}`&apos;`</p>
                              </CardContent>
                              <CardHeader>
                                  <div className="flex items-center gap-4">
@@ -395,7 +389,6 @@ function PricingSection() {
                     </CardContent>
                     <div className="p-6 pt-0">
                         <Button asChild className="w-full" variant={plan.id === 'standard' ? 'default' : 'outline'} disabled={plan.locked}>
-                             {/* ✅ FIX: Replaced Link with <a> */}
                             <a href="/sign-up">
                                 {plan.locked && <LockIcon className="mr-2 h-4 w-4" />}
                                 {plan.buttonText}
@@ -436,7 +429,6 @@ function CTASection() {
         <h2 className="text-3xl font-bold">Pronto para transformar seu atendimento?</h2>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">Junte-se a milhares de empresas que já estão economizando tempo e encantando clientes com o CicloSis.</p>
         <Button asChild size="lg" className="mt-8 rounded-full">
-           {/* ✅ FIX: Replaced Link with <a> */}
           <a href="/sign-up">Experimente Gratuitamente Agora</a>
         </Button>
       </div>
@@ -455,7 +447,6 @@ function Footer() {
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           <div className="col-span-full lg:col-span-1 mb-8 lg:mb-0">
-            {/* ✅ FIX: Replaced Link with <a> */}
             <a href="/" className="text-2xl font-bold text-brand-text">Ciclo<span className="text-brand-accent">Sis</span></a>
             <p className="mt-4 text-muted-foreground">Automatize. Gerencie. Cresça.</p>
           </div>
@@ -465,7 +456,6 @@ function Footer() {
               <ul className="space-y-3">
                 {group.links.map((link)=>(
                   <li key={link.name}>
-                    {/* ✅ FIX: Replaced Link with <a> */}
                     <a href={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.name}</a>
                   </li>
                 ))}
@@ -476,7 +466,6 @@ function Footer() {
         <div className="mt-12 pt-8 border-t flex flex-col sm:flex-row justify-between items-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} CicloSis. Todos os direitos reservados.</p>
           <div className="flex gap-4 mt-4 sm:mt-0">
-             {/* ✅ FIX: Replaced Link with <a> */}
              <a href="#"><Twitter className="h-5 w-5 hover:text-primary"/></a>
              <a href="#"><Linkedin className="h-5 w-5 hover:text-primary"/></a>
              <a href="#"><Instagram className="h-5 w-5 hover:text-primary"/></a>
