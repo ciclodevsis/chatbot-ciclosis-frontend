@@ -1,6 +1,6 @@
 // src/app/page.tsx
 
-"use client"; // Add "use client" at the top as we are using hooks like useEffect
+"use client"; 
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,7 +8,7 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Check, Building2, Briefcase, GraduationCap, Store, Landmark, HelpCircle, BookOpen, Award, Users, MessageSquare, Code, ShieldCheck, BarChart2, Zap, Cog, Twitter, Linkedin, Instagram, Lock as LockIcon } from "lucide-react";
-import React, { useEffect } from "react"; // Import useEffect
+import React, { useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 
@@ -28,7 +28,6 @@ const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWit
 );
 ListItem.displayName = "ListItem";
 
-// Lista unificada de funcionalidades para o Header e a seção Features.
 const productFeaturesList = [
     { title: "Chatbot Inteligente", description: "Mensagens e chat em tempo real para automação 24/7.", href: "/features/messaging", icon: MessageSquare },
     { title: "Metas e Relatórios", description: "Acompanhe o desempenho do seu negócio com indicadores chave.", href: "/features/reporting", icon: BarChart2 },
@@ -40,9 +39,7 @@ const productFeaturesList = [
 
 
 export default function HomePage() {
-  // ✅ FIX: Moved logic from LandingPageClient directly into this component.
   useEffect(() => {
-    // Scroll reveal animation setup
     const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -55,21 +52,19 @@ export default function HomePage() {
     });
     scrollRevealElements.forEach(el => observer.observe(el));
 
-    // Logic for the pricing toggle
     const pricingToggle = document.getElementById('pricing-toggle') as HTMLInputElement;
     const standardPrice = document.getElementById('standard-price');
     
     const handleToggleChange = (event: Event) => {
         const target = event.target as HTMLInputElement;
-        if (target.checked) { // Annual
+        if (target.checked) {
             if (standardPrice) standardPrice.textContent = 'R$ 40,00';
-        } else { // Monthly
+        } else {
             if (standardPrice) standardPrice.textContent = 'R$ 50,00';
         }
     };
     pricingToggle?.addEventListener('change', handleToggleChange);
 
-    // Cleanup function
     return () => {
         scrollRevealElements.forEach(el => observer.unobserve(el));
         pricingToggle?.removeEventListener('change', handleToggleChange);
@@ -90,19 +85,17 @@ export default function HomePage() {
         <CTASection />
       </main>
       <Footer />
-      {/* LandingPageClient is no longer needed here */}
     </>
   );
 }
 
-// ✅ FIX: Removed "export" to make this a local component and resolve the Next.js page type error.
 function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
         <div className="flex items-center gap-8">
           <a href="/" className="text-2xl font-bold text-brand-text">
-            Ciclo<span className="text-brand-accent">Sis</span>
+            Chatbot<span className="text-brand-accent"> Ciclosis</span>
           </a>
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList>
@@ -111,15 +104,15 @@ function Header() {
                 <NavigationMenuTrigger>Produto</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="grid grid-cols-[1fr_1.25fr] w-[650px] p-4 items-start">
-                    <div className="flex flex-col justify-center bg-secondary rounded-l-md p-6 h-full">
+                    <div className="flex flex-col justify-start bg-secondary rounded-l-md p-6 h-full gap-4">
                       <h3 className="text-lg font-semibold text-brand-text">Chatbot Ciclosis para atendimento ao cliente</h3>
-                      <p className="mt-2 text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground">
                         A solução completa para gestão do seu negócio e atendimento ao cliente.
                       </p>
                       <img 
                         src="https://placehold.co/400x225/F5F5F7/1E1E1E?text=Visual+do+Chatbot" 
                         alt="Demonstração do Chatbot Ciclosis" 
-                        className="mt-4 rounded-md aspect-video object-cover" 
+                        className="mt-auto rounded-md aspect-video object-cover" 
                       />
                     </div>
                     <div className="p-6">
@@ -143,9 +136,10 @@ function Header() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Soluções</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="grid w-[550px] grid-cols-2 gap-4 p-4">
+                  <div className="grid w-[550px] grid-cols-2 gap-x-6 p-4">
                     <div>
-                      <h3 className="font-semibold text-brand-text mb-2 px-3">Por Tipo de Empresa</h3>
+                      <h3 className="font-semibold text-brand-text px-3">Por Tipo de Empresa</h3>
+                      <Separator className="my-2" />
                       <ul className="flex flex-col gap-1">
                         <ListItem href="/solutions/enterprise" title="Enterprise"><Building2 className="inline-block mr-2 h-4 w-4" /> Para grandes corporações.</ListItem>
                         <ListItem href="/solutions/smb" title="Pequenas Empresas"><Briefcase className="inline-block mr-2 h-4 w-4" /> Soluções ágeis e escaláveis.</ListItem>
@@ -153,7 +147,8 @@ function Header() {
                       </ul>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-brand-text mb-2 px-3">Por Setor</h3>
+                      <h3 className="font-semibold text-brand-text px-3">Por Setor</h3>
+                      <Separator className="my-2" />
                       <ul className="flex flex-col gap-1">
                         <ListItem href="/industries/retail" title="Varejo"><Store className="inline-block mr-2 h-4 w-4" /> Otimize a experiência do cliente.</ListItem>
                         <ListItem href="/industries/finance" title="Serviços Financeiros"><Landmark className="inline-block mr-2 h-4 w-4" /> Segurança e conformidade.</ListItem>
@@ -206,7 +201,7 @@ function HeroSection() {
             <span className="text-brand-accent">Encante seus Clientes.</span> 
           </h1> 
           <p className="text-lg md:text-xl text-brand-text-secondary mb-10"> 
-            CicloSis é a plataforma completa para gerenciamento de agendamentos, clientes e comunicação via Chatbot. 
+            O chatbot Ciclo é a plataforma completa para gerenciamento de agendamentos, clientes e comunicação via Chatbot. 
           </p> 
           <div className="flex justify-center gap-4"> 
             <Button asChild size="lg" className="rounded-full"><a href="/sign-up">Comece Agora (Grátis)</a></Button> 
@@ -216,7 +211,7 @@ function HeroSection() {
         <div className="mt-16"> 
           <Card className="max-w-5xl mx-auto shadow-subtle"> 
             <CardContent className="p-4"> 
-              <img src="https://placehold.co/1200x600/F5F5F7/1E1E1E?text=Visual+do+Produto+Aqui" alt="Dashboard do CicloSis" className="rounded-md" /> 
+              <img src="https://placehold.co/1200x600/F5F5F7/1E1E1E?text=Visual+do+Produto+Aqui" alt="Dashboard do Ciclo" className="rounded-md" /> 
             </CardContent> 
           </Card> 
         </div> 
@@ -236,7 +231,7 @@ function FeaturesSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {productFeaturesList.map(feature => (
             <a href={feature.href} key={feature.title} className="block group">
-              <Card className="h-full bg-background group-hover:border-primary group-hover:shadow-subtle transition-all duration-300">
+              <Card className="h-full group-hover:border-primary group-hover:shadow-subtle transition-all duration-300">
                 <CardHeader>
                   <div className="bg-primary/10 text-primary h-12 w-12 rounded-lg flex items-center justify-center mb-4">
                     <feature.icon className="h-6 w-6" />
@@ -265,7 +260,7 @@ function SolutionsSection() {
       <div className="container">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold tracking-tight">Soluções sob medida para o seu setor</h2>
-          <p className="mt-4 text-lg text-muted-foreground">O CicloSis se adapta às necessidades únicas do seu negócio, gerando resultados reais.</p>
+          <p className="mt-4 text-lg text-muted-foreground">O chatbot Ciclo se adapta às necessidades únicas do seu negócio, gerando resultados reais.</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
           {solutions.map((solution)=>(
@@ -289,7 +284,7 @@ function SolutionsSection() {
 
 function TestimonialsSection() {
     const testimonials = [
-        { quote: "A CicloSis revolucionou nosso agendamento. Reduzimos o tempo gasto em 80% e nossos clientes adoram a praticidade do chatbot.", name: "Joana Silva", title: "CEO, Clínica Bem Estar", imgSrc: "https://i.pravatar.cc/150?img=1" },
+        { quote: "O chatbot Ciclo revolucionou nosso agendamento. Reduzimos o tempo gasto em 80% e nossos clientes adoram a praticidade do chatbot.", name: "Joana Silva", title: "CEO, Clínica Bem Estar", imgSrc: "https://i.pravatar.cc/150?img=1" },
         { quote: "A integração com o Google Agenda é fantástica! Mantém toda a equipe sincronizada sem nenhum esforço manual. Recomendo.", name: "Carlos Pereira", title: "Diretor, Consultoria", imgSrc: "https://i.pravatar.cc/150?img=2" },
         { quote: "O suporte é ágil e os relatórios nos dão uma visão clara do crescimento. Uma ferramenta indispensável para o nosso salão.", name: "Mariana Costa", title: "Gerente, Salão de Beleza", imgSrc: "https://i.pravatar.cc/150?img=3" },
         { quote: "Finalmente uma plataforma que entende as necessidades de um escritório. A gestão de clientes ficou muito mais simples.", name: "Ricardo Mendes", title: "Sócio, Mendes Advocacia", imgSrc: "https://i.pravatar.cc/150?img=4" },
@@ -302,14 +297,14 @@ function TestimonialsSection() {
         <div className="container">
             <div className="text-center max-w-3xl mx-auto">
                 <h2 className="text-3xl font-bold tracking-tight">Amado por empresas em todo o Brasil</h2>
-                <p className="mt-4 text-lg text-muted-foreground">Veja como o CicloSis está transformando o atendimento ao cliente.</p>
+                <p className="mt-4 text-lg text-muted-foreground">Veja como o Ciclo está transformando o atendimento ao cliente.</p>
             </div>
             <div data-animated="true" className="marquee mt-16">
                 <div className="marquee-track">
                     {[...testimonials, ...testimonials].map((testimonial, index) => (
                         <Card key={index} className="flex flex-col justify-between flex-shrink-0 w-[350px] marquee-card">
                              <CardContent className="pt-6">
-                                 <p className="italic">&lsquo;&lsquo;{testimonial.quote}&rsquo;&rsquo;</p>
+                                 <p className="italic">"{testimonial.quote}"</p>
                              </CardContent>
                              <CardHeader>
                                  <div className="flex items-center gap-4">
@@ -409,12 +404,12 @@ function FAQSection() {
       <div className="container max-w-4xl mx-auto">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight">Perguntas Frequentes</h2>
-          <p className="mt-4 text-lg text-muted-foreground">Tudo o que você precisa saber sobre o CicloSis.</p>
+          <p className="mt-4 text-lg text-muted-foreground">Tudo o que você precisa saber sobre o chatbot Ciclo.</p>
         </div>
         <Accordion type="single" collapsible className="w-full mt-12">
           <AccordionItem value="item-1">
-            <AccordionTrigger>O CicloSis oferece um período de teste gratuito?</AccordionTrigger>
-            <AccordionContent>Sim! Oferecemos um teste gratuito de 14 dias em nosso plano Padrão, sem necessidade de cartão de crédito. Você pode explorar todas as funcionalidades e ver como o CicloSis pode ajudar seu negócio.</AccordionContent>
+            <AccordionTrigger>O chatbot Ciclo oferece um período de teste gratuito?</AccordionTrigger>
+            <AccordionContent>Sim! Oferecemos um teste gratuito de 30 dias em nosso plano Padrão, sem necessidade de cartão de crédito. Você pode explorar todas as funcionalidades e ver como o chatbot Ciclo pode ajudar seu negócio.</AccordionContent>
           </AccordionItem>
         </Accordion>
       </div>
@@ -427,7 +422,7 @@ function CTASection() {
     <section id="cta" className="py-20 bg-primary/5">
       <div className="container text-center">
         <h2 className="text-3xl font-bold">Pronto para transformar seu atendimento?</h2>
-        <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">Junte-se a milhares de empresas que já estão economizando tempo e encantando clientes com o CicloSis.</p>
+        <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">Junte-se a milhares de empresas que já estão economizando tempo e encantando clientes com o chatbot Ciclo.</p>
         <Button asChild size="lg" className="mt-8 rounded-full">
           <a href="/sign-up">Experimente Gratuitamente Agora</a>
         </Button>
@@ -437,18 +432,57 @@ function CTASection() {
 }
 
 function Footer() { 
-  const linkGroups=[
-    {title:"Soluções",links:[{name:"Enterprise",href:"/solutions/enterprise"},{name:"Pequenas Empresas",href:"/solutions/smb"},{name:"Startups",href:"/solutions/startups"},{name:"Varejo",href:"/industries/retail"},{name:"Financeiro",href:"/industries/finance"},{name:"Educação",href:"/industries/education"},]},
-    {title:"Recursos",links:[{name:"Centro de Ajuda",href:"/help-center"},{name:"Academy",href:"/academy"},{name:"Fóruns",href:"/forums"},{name:"Desenvolvedores",href:"/developers"},{name:"Depoimentos",href:"/customer-stories"},]},
-    {title:"Empresa",links:[{name:"Sobre Nós",href:"/about"},{name:"Carreiras",href:"/careers"},{name:"Imprensa",href:"/press"},{name:"Contato",href:"/contact"},],},
+  // ✅ FIX: Links do rodapé atualizados para corresponder às seções da página
+  const linkGroups = [
+    {
+      title: "Produto",
+      links: [
+        { name: "Chatbot Inteligente", href: "/features/messaging" },
+        { name: "Metas e Relatórios", href: "/features/reporting" },
+        { name: "Integrações", href: "/features/integrations" },
+        { name: "Gestão de Equipe", href: "/features/workforce" },
+        { name: "Proteção de Dados", href: "/features/security" },
+        { name: "Personalização Avançada", href: "/features/customization" },
+      ],
+    },
+    {
+      title: "Soluções",
+      links: [
+        { name: "Enterprise", href: "/solutions/enterprise" },
+        { name: "Pequenas Empresas", href: "/solutions/smb" },
+        { name: "Startups", href: "/solutions/startups" },
+        { name: "Varejo", href: "/industries/retail" },
+        { name: "Serviços Financeiros", href: "/industries/finance" },
+        { name: "Educação", href: "/industries/education" },
+      ],
+    },
+    {
+      title: "Recursos",
+      links: [
+        { name: "Centro de Ajuda", href: "/help-center" },
+        { name: "Ciclo Academy", href: "/academy" },
+        { name: "Certificações", href: "/certifications" },
+        { name: "Fóruns da Comunidade", href: "/forums" },
+        { name: "Depoimentos", href: "/customer-stories" },
+        { name: "Desenvolvedores", href: "/developers" },
+      ],
+    },
+    {
+      title: "Empresa",
+      links: [
+        { name: "Sobre Nós", href: "https://ciclosis.com.br" },
+        { name: "Contato", href: "https://ciclosis.com.br" },
+      ],
+    },
   ];
+
   return(
     <footer className="bg-secondary border-t">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           <div className="col-span-full lg:col-span-1 mb-8 lg:mb-0">
-            <a href="/" className="text-2xl font-bold text-brand-text">Ciclo<span className="text-brand-accent">Sis</span></a>
-            <p className="mt-4 text-muted-foreground">Automatize. Gerencie. Cresça.</p>
+            <a href="https://ciclosis.com.br" className="text-2xl font-bold text-brand-text">Ciclo</a>
+            <p className="mt-4 text-muted-foreground">Desenvolva. Automatize. Cresça.</p>
           </div>
           {linkGroups.map((group)=>(
             <div key={group.title}>
@@ -464,11 +498,10 @@ function Footer() {
           ))}
         </div>
         <div className="mt-12 pt-8 border-t flex flex-col sm:flex-row justify-between items-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} CicloSis. Todos os direitos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} Ciclo. Todos os direitos reservados.</p>
+          {/* ✅ FIX: Links de redes sociais atualizados */}
           <div className="flex gap-4 mt-4 sm:mt-0">
-             <a href="#"><Twitter className="h-5 w-5 hover:text-primary"/></a>
-             <a href="#"><Linkedin className="h-5 w-5 hover:text-primary"/></a>
-             <a href="#"><Instagram className="h-5 w-5 hover:text-primary"/></a>
+             <a href="https://www.instagram.com/ciclo.sis/" target="_blank" rel="noopener noreferrer"><Instagram className="h-5 w-5 hover:text-primary" /></a>
           </div>
         </div>
       </div>

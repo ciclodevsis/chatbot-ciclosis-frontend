@@ -6,10 +6,10 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const inter = Inter({ subsets: ["latin"], variable: "--sans-serif" });
 
 export const metadata: Metadata = {
-  title: "Chatbot Ciclosis - Automatize seu Agendamento",
+  title: "Chatbot Ciclo - Automatize seu Agendamento",
   description: "A plataforma completa para gerenciamento de agendamentos, clientes e comunicação.",
 };
 

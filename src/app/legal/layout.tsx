@@ -14,8 +14,8 @@ export default function LegalLayout({
           <Link href="/" className="text-2xl font-bold">
             Chatbot<span className="text-brand-accent"> Ciclosis</span>
           </Link>
-          <Link href="/" className="text-sm font-medium text-brand-accent hover:underline">
-            Voltar para o site
+          <Link href="/sign-up" className="text-sm font-medium text-brand-accent hover:underline">
+            Voltar para o cadastro
           </Link>
         </div>
       </header>
