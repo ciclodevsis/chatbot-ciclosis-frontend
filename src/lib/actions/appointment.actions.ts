@@ -7,6 +7,7 @@ import { getUserSession } from "../session";
 import { AppointmentSchema } from "../validators"; // Validador Zod para agendamentos
 import type { FormState } from "./types";
 import { Client } from "../types";
+import { toDate } from 'date-fns-tz';
 
 // A lógica de integração com Google Calendar será movida para google.actions.ts
 // e chamada a partir daqui para manter a separação de responsabilidades.
@@ -69,7 +70,10 @@ export async function createAppointment(prevState: FormState, formData: FormData
     const { data: serviceData } = await supabase.from('services').select('name, duration_minutes').eq('id', serviceId).single();
     if (!serviceData) throw new Error("Serviço não encontrado.");
 
-    const startTime = new Date(`${selectedDate.substring(0, 10)}T${selectedSlot}:00`);
+    const timeZone = 'America/Sao_Paulo';
+    const dateString = `${selectedDate.substring(0, 10)}T${selectedSlot}:00`;
+
+    const startTime = toDate(dateString, { timeZone });
     const endTime = new Date(startTime.getTime() + serviceData.duration_minutes * 60000);
 
     const { data: newAppointment, error: appointmentError } = await supabase.from('appointments').insert({
@@ -159,9 +163,12 @@ export async function updateAppointment(prevState: FormState, formData: FormData
 
     if (!serviceData) throw new Error("Serviço selecionado não encontrado.");
 
+    const timeZone = 'America/Sao_Paulo';
+    const dateString = `${new Date(newDate).toISOString().substring(0, 10)}T${newSlot}:00`;
+
     // 2. Calcula os novos horários de início e fim
     const [hour, minute] = newSlot.split(':');
-    const newStartTime = new Date(newDate);
+    const newStartTime = toDate(dateString, { timeZone });
     newStartTime.setHours(parseInt(hour), parseInt(minute), 0, 0);
     const newEndTime = new Date(newStartTime.getTime() + serviceData.duration_minutes * 60000);
 
