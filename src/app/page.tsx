@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Check, Building2, Briefcase, GraduationCap, Store, Landmark, HelpCircle, BookOpen, Award, Users, MessageSquare, Code, ShieldCheck, BarChart2, Zap, Cog, Twitter, Linkedin, Instagram, Lock as LockIcon } from "lucide-react";
+import { Check, Building2, Briefcase, GraduationCap, Store, Landmark, HelpCircle, BookOpen, Award, Users, MessageSquare, Code, ShieldCheck, BarChart2, Zap, Cog, Instagram, Lock as LockIcon } from "lucide-react";
 import React, { useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
@@ -304,7 +304,7 @@ function TestimonialsSection() {
                     {[...testimonials, ...testimonials].map((testimonial, index) => (
                         <Card key={index} className="flex flex-col justify-between flex-shrink-0 w-[350px] marquee-card">
                              <CardContent className="pt-6">
-                                 <p className="italic">"{testimonial.quote}"</p>
+                                 <p className="italic">&ldquo;&ldquo;{testimonial.quote}&rdquo;&rdquo;</p>
                              </CardContent>
                              <CardHeader>
                                  <div className="flex items-center gap-4">
